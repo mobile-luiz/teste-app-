@@ -1,0 +1,1105 @@
+<style>
+
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 10px;
+        background-color: #f8f8f8;
+    }
+    
+    h1 {
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+        font-weight: 600;
+        font-size: 28px;
+    }
+    
+    /* Formulário Principal */
+    form {
+        background-color: #fff; /* Adicione um fundo branco para uma aparência mais moderna */
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 20px auto; /* Centralize horizontalmente */
+        max-width: 800px; /* Defina a largura máxima desejada */
+    }
+    
+    /* Linha do Formulário */
+    .form-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .form-row label {
+        width: 150px;
+        text-align: right;
+        margin-right: 10px;
+        color: #555555;
+        font-weight: 500;
+    }
+    
+    .form-row select,
+    .form-row input[type="text"],
+    .form-row input[type="datetime-local"],
+    .form-row input[type="time"],
+    .form-row textarea {
+        flex: 1;
+        max-width: 200px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    
+    textarea {
+        max-width: 400px;
+    }
+    
+    /* Botões */
+    input[type="button"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+    }
+    
+    input[type="button"]:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Tabela */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+        font-size: 14px;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+        color: #333333;
+        font-weight: 600;
+    }
+    
+    /* Ações na Tabela */
+    .actions {
+        display: flex;
+    }
+    
+    .actions button {
+        margin-right: 5px;
+        padding: 5px 10px;
+        font-size: 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+    }
+    
+    .actions button.edit {
+        background-color: #17c671;
+        color: white;
+    }
+    
+    .actions button.delete {
+        background-color: #f44336;
+        color: white;
+    }
+    
+    /* Filtros */
+    #filtros {
+        margin: 0 auto; /* Centralize horizontalmente */
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 300px; /* Defina a largura desejada */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex; /* Use display flex para alinhar elementos verticalmente */
+        flex-direction: column; /* Empilhe elementos verticalmente */
+        align-items: center; /* Centralize os elementos verticalmente */
+    }
+    
+    #filtros label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    #filtros select,
+    #filtros input[type="datetime-local"],
+    #filtros input[type="time"] {
+        margin-bottom: 10px;
+        padding: 5px;
+        width: 100%; /* Ocupar toda a largura disponível */
+    }
+    
+    #filtros button {
+        padding: 8px 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    
+    #filtros button:hover {
+        background-color: #45a049;
+    }
+    
+    /* Container Flex */
+    .flex-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    /* Formulário Vertical */
+    .vertical-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    /* Cabeçalho da Tabela Fixo */
+    th {
+        background-color: #333;
+        color: #fff;
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+    
+    /* Estilização de Campos de Entrada Focados */
+    label[for="horaInicialInput"] {
+        font-weight: bold;
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 8px;
+    }
+    
+    #horaInicialInput {
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    #horaInicialInput:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+    
+    
+    /* Estilize a logo da empresa */
+    .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 2;
+        max-width: 300px; /* Defina a largura máxima da logo */
+    }
+    
+    /* Estilize o cabeçalho */
+    h1 {
+        margin: 20px 0 10px; /* Margem superior de 30px para dar espaço para a logo */
+        color: #333;
+        text-align: center;
+        font-weight: 600;
+        font-size: 20px; /* Reduza o tamanho da fonte do cabeçalho */
+    }
+    
+    
+    /* Cabeçalho da Tabela */
+    th {
+        background-color: #f2f2f2; /* Cor de fundo desejada */
+        color: #121312d5;
+        font-weight: bold; /* Deixa o texto em negrito */
+    }
+    
+    
+    
+    
+    /* Estilize a div de filtros */
+    #filtros {
+        margin: 0 auto; /* Isso centralizará a div horizontalmente */
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 300px; /* Defina a largura desejada */
+        position: absolute;
+        top: 70px; /* Ajuste essa propriedade para definir a distância do topo desejada */
+        left: 50%; /* Centralize horizontalmente na largura total da tela */
+        transform: translateX(-50%); /* Volte metade da largura para a esquerda */
+    }
+    
+    
+    /* Estilize os botões de pesquisa */
+    #btnPesquisarDatas,
+    #btnFiltrarFrente,
+    #btnPesquisar {
+        display: block; /* Certifique-se de que os botões ocupem toda a largura da div */
+        width: 100%;
+        margin-top: 10px;
+        padding: 8px 16px; /* Reduza o espaçamento interno (padding) para diminuir o tamanho */
+        font-size: 12px; /* Reduza o tamanho da fonte */
+    }
+    
+    /* Estilize os selects e inputs */
+    #pesquisarStatus,
+    #pesquisarFrente,
+    #dataInicialPesquisa,
+    #dataFinalPesquisa {
+        width: 100%; /* Certifique-se de que ocupem toda a largura da div */
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+    
+    
+    
+    .concluido-no-horario {
+        color: green;
+    }
+        
+    </style>
+    
+        </style>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/pt-br.min.js"></script>
+        <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        
+    </head>
+    <body>
+    
+        <div class="logo">
+            <img src="C:\Users\Luiz\Desktop\logo usina atual\usina_logo.png" alt="Logo da Empresa">
+        </div>
+        <h1>Cronômetro de alocação dos caminhões </h1>
+        <div class="container">
+        <div class="form-container">
+        <form id="filtroForm">  
+            <div class="form-row">
+                <label for="filtroInput">Frota:</label>
+                <select id="filtroInput" name="filtro">
+                    <option value="0410080">0410080</option>
+                    <option value="0410081">0410081</option>
+                    <option value="0410082">0410082</option>
+                    <option value="0410083">0410083</option>
+                    <option value="0410084">0410084</option>
+                    <option value="0410085">0410085</option>
+                    <option value="0410086">0410086</option>
+                    <option value="0410087">0410087</option>
+                    <option value="0410089">0410089</option>
+                    <option value="0410090">0410090</option>
+                    <option value="0410091">0410091</option>
+                    <option value="0410092">0410092</option>
+                    <option value="0410093">0410093</option>
+                    <option value="0410094">0410094</option>
+                    <option value="0410095">0410095</option>
+                    <option value="0410096">0410096</option>
+                    <option value="0410097">0410097</option>
+                    <option value="0410098">0410098</option>
+                    <option value="0410099">0410099</option>
+                    <option value="0410100">0410100</option>
+                    <option value="0410101">0410101</option>
+                    <option value="0410105">0410105</option>
+                    <option value="0410114">0410114</option>
+                    <option value="0410116">0410116</option>
+                    <option value="0410117">0410117</option>
+                    <option value="0410120">0410120</option>
+                    <option value="0410121">0410121</option>
+                    <option value="0420042">0420042</option>
+                    <option value="0420044">0420044</option>
+                    <option value="0420045">0420045</option>
+                    <option value="0420050">0420050</option>
+    
+    
+                </select>
+            </div>
+    
+            <div class="form-row">
+                <label for="frenteInput">Frente:</label>
+                <select id="frenteInput" name="frente">
+                    <option value="A-1">A-1</option>
+                    <option value="A-2">A-2</option>
+                    <option value="B-1">B-1</option>
+                    <option value="B-2">B-2</option>
+                    <option value="CM">CM</option>
+                    <option value="PÁTIO">PÁTIO</option>
+                </select>
+            </div>
+    
+            <div class="form-row">
+                <label for="fazendaInput">Fazenda:</label>
+                <select id="fazendaInput" name="fazenda">
+                    <option value="Aldeia">Aldeia</option>
+                    <option value="Antas">Antas</option>
+                    <option value="Aripibú">Aripibú</option>
+                    <option value="Bom Jardim">Bom Jardim</option>
+                    <option value="Bom Sucesso">Bom Sucesso</option>
+                    <option value="Cachoeirinha">Cachoeirinha</option>
+                    <option value="Canto Alegre">Canto Alegre</option>
+                    <option value="Canoinha">Canoinha</option>
+                    <option value="Conceição">Conceição</option>
+                    <option value="Duas Bocas">Duas Bocas</option>
+                    <option value="Eldorado">Eldorado</option>
+                    <option value="José da Costa">José da Costa</option>
+                    <option value="Mato Grosso">Mato Grosso</option>
+                    <option value="Mauriceia">Mauriceia</option>
+                    <option value="Novo">Novo</option>
+                    <option value="Oncinha">Oncinha</option>
+                    <option value="Palmeiras">Palmeiras</option>
+                    <option value="Pau Sangue">Pau Sangue</option>
+                    <option value="Pedra de Amolar">Pedra de Amolar</option>
+                    <option value="Primavera">Primavera</option>
+                    <option value="Paraiso">Paraiso</option>
+                    <option value="Santa Cruz 1">Santa Cruz 1</option>
+                    <option value="Santa Cruz 2">Santa Cruz 2</option>
+                    <option value="Santa Luzia">Santa Luzia</option>
+                    <option value="São Felíx">São Felíx</option>
+                    <option value="Triunfo">Triunfo</option>
+                    <option value="Vicente Campelo">Vicente Campelo</option>
+                    <option value="Pátio da usina">Pátio da usina</option>
+                    <option value="Outros">Outro</option>
+                   
+                </select>
+            </div>
+    
+            <div class="form-row">
+                        
+    <label for="dataInicialInput">Data Inicial + horário:</label>
+                <input type="datetime-local" id="dataInicialInput" name="dataInicial">
+            </div>
+    
+            <div class="form-row">
+                <label for="dataFinalInput">Data Final + horário:</label>
+                <input type="datetime-local" id="dataFinalInput" name="dataFinal">
+            </div>
+    
+            <div class="form-row">
+                <label for="horaInicialInput">Horas da Previsão:</label>
+                <input type="time" id="horaInicialInput" name="horaInicial" required>
+            </div>
+            
+    
+            <div class="form-row">
+                <label for="previsaoRetornoInput">Previsão de Retorno:</label>
+                <input type="datetime-local" id="previsaoRetornoInput" name="previsaoRetorno" readonly>
+            </div>
+    
+            <div class="form-row">
+                <label for="observacaoInput">Observação:</label>
+                <textarea id="observacaoInput" name="observacao"></textarea>
+            </div>
+    
+            <input type="button" value="Salvar" onclick="salvarDados()">
+            <input type="button" value="Cancelar" onclick="limparFormulario()">
+            
+            <p id="currentDateTime"></p>
+         
+           
+           <div id="filtros">
+        <label for="pesquisarStatus">Pesquisar por status:</label>
+        <select id="pesquisarStatus" name="pesquisarStatus">
+            <option value="">Todas as frentes</option>
+            <option value="Em andamento:">Em andamento:</option>
+            <option value="Atrasado:">Atrasado:</option>
+            <option value="Concluído no horário:">Concluído no horário:</option>
+            <option value="Concluído com atraso:">Concluído com atraso:</option>
+        </select>
+        <button type="button" id="btnPesquisar" onclick="pesquisar()">Pesquisar</button>
+    
+        <label for="pesquisarFrente">Pesquisar por frente:</label>
+        <select id="pesquisarFrente" name="pesquisarFrente">
+            <option value="">Todas as frentes</option>
+            <option value="A-1">A-1</option>
+            <option value="A-2">A-2</option>
+            <option value="B-1">B-1</option>
+            <option value="B-2">B-2</option>
+            <option value="CM">CM</option>
+            <option value="PÁTIO">PÁTIO</option>
+        </select>
+        <button type="button" id="btnFiltrarFrente" onclick="filtrarFrente()">Filtrar Frente</button>
+        
+        <div class="form-row">
+            <label for="dataInicialPesquisa">Data Inicial:</label>
+            <input type="datetime-local" id="dataInicialPesquisa" name="dataInicialPesquisa">
+        </div>
+        
+        <div class="form-row">
+            <label for="dataFinalPesquisa">Data Final:</label>
+            <input type="datetime-local" id="dataFinalPesquisa" name="dataFinalPesquisa">
+        </div>
+    
+        <button type="button" id="btnPesquisarDatas" onclick="pesquisarPorDatas()">Pesquisar</button>
+    
+  
+    </div>
+    
+          </div>
+    
+            <button id="btnDownload">Baixar Dados em Excel</button>
+        
+            <div id="pagination"></div>
+        
+        </form>
+    
+        <table id="dadosTable">
+            <thead>
+                <tr>
+                    <th>Frota</th>
+                    <th>Frente</th>
+                    <th>Fazenda</th>
+                    <th>Data Inicial</th>
+                    <th>Data Final</th>
+                    <th>Previsão de Retorno</th>
+                    <th>Duração</th>
+                    <th>Status do carro</th>
+                    <th>Observação</th>
+                    <th>Ações</th>
+                
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <label for="filtroFrota">Filtrar Frota:</label>
+            <input type="text" id="filtroFrota" oninput="filtrarTabela()">
+            <label for="filtroFrente">Filtrar Frente:</label>
+            <input type="text" id="filtroFrente" oninput="filtrarTabela()">
+            <label for="filtroFazenda">Filtrar Fazenda:</label>
+            <input type="text" id="filtroFazenda" oninput="filtrarTabela()">
+            <label for="filtroDataInicial">Filtrar Data Inicial:</label>
+            <input type="text" id="filtroDataInicial" oninput="filtrarTabela()">
+            <!-- Repita o padrão para as outras colunas -->
+            
+        </table>
+    
+        <script>
+    
+       
+        var table = document.getElementById("dadosTable");
+    var rowsPerPage = 300; //Número de linhas a serem exibidas por página
+    var currentPage = 1 ; // Número da página atual
+    
+    function displayRows(start, end) {
+      for (var i = 0; i < table.rows.length; i++) {
+        if (i >= start && i < end) {
+          table.rows[i].style.display = "";
+        } else {
+          table.rows[i].style.display = "none";
+        }
+      }
+    }
+    
+    
+    function setupPagination() {
+      var pageCount = Math.ceil(table.rows.length / rowsPerPage);
+      var pagination = document.getElementById("pagination");
+      var currentPageElement = document.getElementById("currentPage"); // Elemento HTML para exibir o número da página atual
+    
+      pagination.innerHTML = ""; // Clear pagination
+    
+      for (var i = 1; i <= pageCount; i++) {
+        var pageLink = document.createElement("a");
+        pageLink.href = "#";
+        pageLink.innerHTML = i;
+    
+        if (i === currentPage) {
+          pageLink.className = "active";
+        }
+    
+        pageLink.addEventListener("click", function (page) {
+          return function () {
+            currentPage = page;
+            displayRows((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+            setupPagination();
+            updateCurrentPageElement(); // Atualiza o número da página atual quando a página é alterada
+          };
+        }(i));
+    
+        pagination.appendChild(pageLink);
+      }
+    
+      updateCurrentPageElement(); // Atualiza o número da página atual inicialmente
+    }
+    
+    function updateCurrentPageElement() {
+      var currentPageElement = document.getElementById("currentPage");
+      currentPageElement.innerHTML = currentPage;
+    }
+    
+    function initializePagination() {
+      displayRows(0, rowsPerPage);
+      setupPagination();
+    }
+    
+    initializePagination();
+    
+        </script>
+    
+    <script>
+        function pesquisar() {
+            var statusSelecionado = document.getElementById("pesquisarStatus").value;
+            var tabela = document.getElementById("dadosTable");
+            var linhas = tabela.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+    
+            for (var i = 0; i < linhas.length; i++) {
+                var colunaStatus = linhas[i].getElementsByTagName("td")[7];
+    
+                if (statusSelecionado === "" || colunaStatus.textContent.startsWith(statusSelecionado.replace(":", ""))) {
+                    linhas[i].style.display = "";
+                } else {
+                    linhas[i].style.display = "none";
+                }
+            }
+        }
+        
+    
+        function filtrarFrente() {
+        var frenteSelecionada = document.getElementById("pesquisarFrente").value;
+        var tabela = document.getElementById("dadosTable");
+        var linhas = tabela.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+    
+        for (var i = 0; i < linhas.length; i++) {
+            // Substitua o índice da coluna com o índice real para "Frente" (por exemplo, 2 se for a terceira coluna)
+            var colunaFrente = linhas[i].getElementsByTagName("td")[1];
+    
+            var frenteMatch = frenteSelecionada === "" || colunaFrente.textContent === frenteSelecionada;
+    
+            if (frenteMatch) {
+                linhas[i].style.display = "";
+            } else {
+                linhas[i].style.display = "none";
+            }
+        }
+    }
+    
+    
+    </script>
+    
+         <script>
+            // Função para atualizar a data e hora atual a cada segundo
+            function atualizarDataHoraAtual() {
+                var currentDateTime = moment().format('DD/MM/YYYY HH:mm:ss');
+                document.getElementById("currentDateTime").innerText = "Data e hora atual: " + currentDateTime;
+            }
+    
+            // Chamar a função para exibir a data e hora atual ao carregar a página
+            window.onload = function() {
+                atualizarDataHoraAtual(); // Chamar a função inicialmente
+    
+                // Atualizar a cada segundo (1000 milissegundos)
+                setInterval(atualizarDataHoraAtual, 1000);
+            };
+        </script>
+    
+        <script>
+            // Configurar o SDK do Firebase
+            var firebaseConfig = {
+                // Coloque suas configurações do Firebase aqui
+                apiKey: "AIzaSyB06rLp9cX9E1qDyMQ1OpF010e4zojlv9A",
+                authDomain: "alocar-3.firebaseapp.com",
+                projectId: "alocar-3",
+                storageBucket: "alocar-3.appspot.com",
+                messagingSenderId: "320701702722",
+                appId: "1:320701702722:web:30b8773dc569d6799a83db",
+                measurementId: "G-YKN1ZRG3C5"
+           
+        };
+    
+            firebase.initializeApp(firebaseConfig);
+    
+    
+      // Função para salvar os dados no Firebase
+    function salvarDados() {
+        
+      var filtro = document.getElementById("filtroInput").value;
+      var frente = document.getElementById("frenteInput").value;
+      var fazenda = document.getElementById("fazendaInput").value;
+      var dataInicial = document.getElementById("dataInicialInput").value;
+      var dataFinal = document.getElementById("dataFinalInput").value;
+      var previsaoRetorno = document.getElementById("previsaoRetornoInput").value;
+      var observacao = document.getElementById("observacaoInput").value;
+    
+      // Salvar os dados no Firebase
+      var novoItem = {
+        filtro: filtro,
+        frente: frente,
+        fazenda: fazenda,
+        dataInicial: dataInicial,
+        dataFinal: dataFinal,
+        previsaoRetorno: previsaoRetorno,
+        observacao: observacao
+      };
+    
+      var dadosTable = document.getElementById("dadosTable").getElementsByTagName("tbody")[0];
+    
+      var key = firebase.database().ref("filtros").push().key;
+    
+      var updates = {};
+      updates["filtros/" + key] = novoItem;
+    
+      firebase.database().ref().update(updates)
+        .then(function () {
+          //alert("Dados salvos com sucesso!");   retirado o 
+          document.getElementById("filtroForm").reset();
+        })
+        .catch(function (error) {
+          console.error("Erro ao salvar os dados: ", error);
+         
+        });
+    }
+    // Função para formatar a data e o horário
+    function formatarDataHora(dataHora) {
+      return moment(dataHora, "YYYY-MM-DDTHH:mm").locale('pt-br').format('DD/MM/YYYY HH:mm');
+    }
+    
+      // Monitorar as mudanças no Firebase Realtime Database
+      firebase.database().ref("filtros").on("value", function(snapshot) {
+        var dadosTable = document.getElementById("dadosTable").getElementsByTagName("tbody")[0];
+        dadosTable.innerHTML = "";
+    
+        var items = [];
+    
+        snapshot.forEach(function(childSnapshot) {
+            var childData = childSnapshot.val();
+            items.push({ key: childSnapshot.key, data: childData });
+        });
+    
+        items.reverse(); // Inverte a ordem dos itens
+    
+        items.forEach(function(item) {
+            var childData = item.data;
+            
+            // Verificar se o item já existe na tabela
+            var existingRow = document.getElementById(item.key);
+            var row;
+    
+            if (existingRow) {
+                row = existingRow;
+            } else {
+                row = dadosTable.insertRow();
+                row.id = item.key;
+            }
+    
+            var filtroCell = row.insertCell(0);
+            var frenteCell = row.insertCell(1);
+            var fazendaCell = row.insertCell(2);
+            var dataInicialCell = row.insertCell(3);
+            var dataFinalCell = row.insertCell(4);
+            var previsaoRetornoCell = row.insertCell(5);
+            var duracaoCell = row.insertCell(6);
+            var atrasoCell = row.insertCell(7);
+            var observacaoCell = row.insertCell(8);
+            var acoesCell = row.insertCell(9);
+    
+            filtroCell.innerText = childData.filtro;
+            frenteCell.innerText = childData.frente;
+            fazendaCell.innerText = childData.fazenda;
+         
+            if (childData.dataInicial) {
+                dataInicialCell.innerText = moment(childData.dataInicial).format('DD-MM-YYYY HH:mm');
+            } else {
+                dataInicialCell.innerText = ""; // Define o valor em branco na célula
+            }
+            
+            if (childData.dataFinal) {
+                dataFinalCell.innerText = moment(childData.dataFinal).format('DD-MM-YYYY HH:mm');
+            } else {
+                dataFinalCell.innerText = ""; // Define o valor em branco na célula
+            }
+            
+            if (childData.previsaoRetorno) {
+                previsaoRetornoCell.innerText = moment(childData.previsaoRetorno).format('DD-MM-YYYY HH:mm');
+            } else {
+                previsaoRetornoCell.innerText = ""; // Define o valor em branco na célula
+            }
+    
+            var duracao = calcularDuracao(childData.dataInicial, childData.dataFinal);
+            duracaoCell.innerText = duracao;
+    
+            if (childData.dataFinal) {
+                // Carro concluído
+                var dataFinalDate = new Date(childData.dataFinal);
+                var previsaoRetornoDate = new Date(childData.previsaoRetorno);
+    
+                if (dataFinalDate > previsaoRetornoDate) {
+                    // Carro concluído com atraso após a previsão de retorno
+                    var atrasoMs = dataFinalDate - previsaoRetornoDate;
+                    var atrasoHoras = Math.floor(atrasoMs / 3600000); // Converter milissegundos para horas
+                    var atrasoMinutos = Math.floor((atrasoMs % 3600000) / 60000); // Obter os minutos restantes
+    
+                    atrasoCell.innerText = "Concluído com atraso: " + atrasoHoras + " horas e " + atrasoMinutos + " minutos";
+                    atrasoCell.classList.add("atrasado"); // Adicionar classe CSS para destacar o atraso
+    
+                     
+                } else {
+                     // Carro concluído no horário
+                     atrasoCell.innerText = "Concluído no horário 👍";
+                     atrasoCell.classList.remove("atrasado"); // Remover classe CSS de atraso
+                     atrasoCell.classList.add("concluido-no-horario"); // Adicionar classe CSS para texto verde
+                    
+                }
+            } else {
+                // Carro ainda não concluído
+                var previsaoRetornoDate = new Date(childData.previsaoRetorno);
+                var currentDate = new Date(); // Obter a data e horário atual
+    
+                if (previsaoRetornoDate < currentDate) {
+                    // Carro em andamento e está atrasado em relação à data atual
+                    var atrasoMs = currentDate - previsaoRetornoDate;
+                    var atrasoMinutos = Math.floor(atrasoMs / 60000); // Converter milissegundos para minutos
+    
+                    atrasoCell.innerText = "Atrasado: " + atrasoMinutos + " minutos";
+                    atrasoCell.classList.add("atrasado"); // Adicionar classe CSS para destacar o atraso
+                    atrasoCell.style.color = "red";
+    
+    
+                  // Voz do Google e tempo de atraso
+                 var frota = childData.filtro;
+                 var ultimosDigitos = frota.substring(frota.length - 3); // Obter os 3 últimos dígitos da frota
+    
+               var mensagemVoz;
+    
+              if (childData.noPatio) {
+               // Carro está no pátio da usina, mencione apenas o local (pátio da usina) e o tempo de atraso
+               mensagemVoz = "No pátio da usina, a frota " + ultimosDigitos + " está atrasada em " + atrasoMinutos + " minutos.";
+               } else if (childData.fazenda) {
+              // Carro não está no pátio da usina e fazenda está definida, mencione a fazenda e o tempo de atraso
+              mensagemVoz = "A frota " + ultimosDigitos + " na fazenda " + childData.fazenda + " está atrasada em " + atrasoMinutos + " minutos.";
+             } else {
+             // Carro não está no pátio da usina e fazenda não está definida, mencione apenas o tempo de atraso
+             mensagemVoz = "A frota " + ultimosDigitos + " está atrasada em " + atrasoMinutos + " minutos.";
+               }
+    
+             speak(mensagemVoz);
+    
+    
+                    // Remover o valor de atrasoAposConclusao do Firebase
+                    firebase.database().ref("filtros/" + item.key + "/atrasoAposConclusao").remove();
+                } else {
+                    // Carro em andamento e dentro do prazo
+                    var dataInicialDate = new Date(childData.dataInicial); // Usar a data e horário inicial registrado
+                    var tempoDecorridoMs = currentDate - dataInicialDate;
+                    var tempoDecorridoMinutos = Math.abs(Math.floor(tempoDecorridoMs / 60000)); // Converter milissegundos para minutos e tornar o valor absoluto
+    
+                    atrasoCell.innerText = "Em andamento:  " + tempoDecorridoMinutos + " minutos";
+                    atrasoCell.classList.remove("atrasado"); // Remover classe CSS de atraso
+    
+                    // Remover o valor de atrasoAposConclusao do Firebase
+                    firebase.database().ref("filtros/" + item.key + "/atrasoAposConclusao").remove();
+                }
+            }
+            
+            if (childData.observacao) {
+                observacaoCell.innerText = childData.observacao;
+            } else {
+                observacaoCell.innerText = ""; // Define o valor em branco na célula
+            }
+        
+            
+            var editarButton = document.createElement("button");
+            editarButton.innerText = "Editar";
+            editarButton.onclick = function () {
+                editarItem(item.key, childData);
+            };
+            acoesCell.appendChild(editarButton);
+    
+            var excluirButton = document.createElement("button");
+            excluirButton.innerText = "Excluir";
+            excluirButton.onclick = function () {
+                excluirItem(item.key);
+            };
+            acoesCell.appendChild(excluirButton);
+        });
+    });
+
+
+
+    
+    
+    
+    // Função para falar utilizando a voz do Google
+    function speak(message) {
+        var speechSynthesis = window.speechSynthesis;
+    
+        // Verificar se a API de fala é suportada no navegador
+        if (speechSynthesis && speechSynthesis.speak) {
+            var utterance = new SpeechSynthesisUtterance(message);
+            utterance.lang = "pt-BR"; // Definir o idioma para português do Brasil
+            speechSynthesis.speak(utterance);
+        } else {
+            console.log("API de fala não suportada");
+        }
+    }
+    
+    // Função para calcular a duração entre a data inicial e a data final em horas e minutos no formato hh:mm
+    function calcularDuracao(dataInicial, dataFinal) {
+        if (dataFinal) {
+            var duracaoMs = new Date(dataFinal) - new Date(dataInicial);
+            var duracaoHoras = Math.floor(duracaoMs / 3600000); // Converter milissegundos para horas
+            var duracaoMinutos = Math.floor((duracaoMs % 3600000) / 60000); // Obter os minutos restantes
+    
+            // Adicionar zeros à esquerda se necessário
+            var horasFormatadas = duracaoHoras.toString().padStart(2, '0');
+            var minutosFormatados = duracaoMinutos.toString().padStart(2, '0');
+            
+    
+            return horasFormatadas + ":" + minutosFormatados;
+        } else {
+            return "  ";
+        }
+    }
+    
+    
+    // Função para editar um item do Firebase Realtime Database
+    function editarItem(key, data) {
+      // Armazenar uma cópia dos dados originais
+      var dadosOriginais = Object.assign({}, data);
+    
+      document.getElementById("filtroInput").value = data.filtro;
+      document.getElementById("frenteInput").value = data.frente;
+      document.getElementById("fazendaInput").value = data.fazenda;
+      document.getElementById("dataInicialInput").value = data.dataInicial;
+      document.getElementById("dataFinalInput").value = data.dataFinal;
+      document.getElementById("previsaoRetornoInput").value = data.previsaoRetorno;
+      document.getElementById("observacaoInput").value = data.observacao;
+    
+      // Excluir a linha anterior
+      firebase.database().ref("filtros/" + key).remove()
+        .then(function() {
+          console.log("Item anterior removido com sucesso.");
+    
+          // Atualizar os dados no Firebase
+          document.getElementById("filtroForm").onsubmit = function(event) {
+            event.preventDefault();
+    
+            var filtro = document.getElementById("filtroInput").value;
+            var frente = document.getElementById("frenteInput").value;
+            var fazenda = document.getElementById("fazendaInput").value;
+            var dataInicial = document.getElementById("dataInicialInput").value;
+            var dataFinal = document.getElementById("dataFinalInput").value;
+            var previsaoRetorno = document.getElementById("previsaoRetornoInput").value;
+            var observacao = document.getElementById("observacaoInput").value;
+    
+            var updates = {
+              filtro: filtro,
+              frente: frente,
+              fazenda: fazenda,
+              dataInicial: dataInicial,
+              dataFinal: dataFinal,
+              previsaoRetorno: previsaoRetorno,
+              observacao: observacao
+            };
+    
+            // Atualizar os dados no Firebase
+            firebase.database().ref("filtros/" + key).set(updates)
+              .then(function() {
+                alert("Dados atualizados com sucesso!");
+                document.getElementById("filtroForm").reset();
+              })
+              .catch(function(error) {
+                console.error("Erro ao atualizar os dados: ", error);
+              });
+          };
+    
+          // Cancelar a edição e restaurar os dados originais
+          document.getElementById("cancelarEdicaoBtn").onclick = function() {
+            // Restaurar os dados originais na lista
+            firebase.database().ref("filtros/" + key).set(dadosOriginais)
+              .then(function() {
+                console.log("Dados restaurados com sucesso.");
+                document.getElementById("filtroForm").reset();
+              })
+              .catch(function(error) {
+                console.error("Erro ao restaurar os dados: ", error);
+              });
+          };
+        })
+        .catch(function(error) {
+          console.error("Erro ao remover o item anterior: ", error);
+        });
+    }
+    
+    
+        // Função para excluir um item do Firebase Realtime Database com confirmação do usuário
+    function excluirItem(key) {
+        // Exibir a mensagem de confirmação
+        var confirmacao = confirm("Deseja excluir este item?");
+    
+        // Verificar se o usuário confirmou a exclusão
+        if (confirmacao) {
+            firebase.database().ref("filtros").child(key).remove()
+                .then(function () {
+                    alert("Item excluído com sucesso!");
+                })
+                .catch(function (error) {
+                    console.error("Erro ao excluir o item: ", error);
+                });
+        }
+    }
+    
+    // Adicione um ouvinte de evento de clique ao botão
+    var btnDownload = document.getElementById("btnDownload");
+    btnDownload.addEventListener("click", function() {
+        // Crie uma nova planilha do Excel
+        var workbook = XLSX.utils.book_new();
+        
+        // Obtenha os dados da tabela
+        var dadosTable = document.getElementById("dadosTable");
+        var worksheet = XLSX.utils.table_to_sheet(dadosTable);
+    
+        // Percorra as células de data e horário e converta para o formato desejado
+        Object.keys(worksheet).forEach(function(cell) {
+            if (cell.match(/[A-Z]+\d+/) && ['D', 'E', 'F'].includes(cell[0])) {
+                var cellData = worksheet[cell];
+                if (cellData.t === 's' && cellData.v.includes('/')) {
+                    var parts = cellData.v.split(' ')[0].split('/');
+                    var formattedDate = `${('0' + parts[0]).slice(-2)}/${('0' + parts[1]).slice(-2)}/${parts[2]}`;
+                    cellData.v = formattedDate;
+                    cellData.w = formattedDate;
+                }
+            }
+        });
+    
+        // Adicione a planilha ao arquivo
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Dados");
+        
+        // Salve o arquivo Excel e faça o download
+        var filename = "dados.xlsx";
+        XLSX.writeFile(workbook, filename, {cellStyles: true});
+    });
+    
+    document.getElementById('pesquisarStatus').onchange = function() {
+      filtrarPorStatus();
+    };
+       //  pesquisar por data 
+    function pesquisarPorDatas() {
+        var dataInicial = document.getElementById("dataInicialPesquisa").value;
+        var dataFinal = document.getElementById("dataFinalPesquisa").value;
+        var tabela = document.getElementById("dadosTable");
+        var linhas = tabela.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+    
+        for (var i = 0; i < linhas.length; i++) {
+            var colunaDataInicial = linhas[i].getElementsByTagName("td")[3];
+            var colunaDataFinal = linhas[i].getElementsByTagName("td")[4];
+    
+            var dataInicialItem = moment(colunaDataInicial.textContent, "DD-MM-YYYY HH:mm");
+            var dataFinalItem = moment(colunaDataFinal.textContent, "DD-MM-YYYY HH:mm");
+    
+            if (dataInicialItem.isSameOrAfter(dataInicial) && dataFinalItem.isSameOrBefore(dataFinal)) {
+                linhas[i].style.display = "";
+            } else {
+                linhas[i].style.display = "none";
+            }
+        }
+    }
+    
+    // calculo da previsão de retorno 
+    
+    // Obtém os elementos dos campos "Data Inicial + horário", "Horas da Previsão" e "Previsão de Retorno"
+    const dataInicialInput = document.getElementById('dataInicialInput');
+    const horaPrevisaoInput = document.getElementById('horaInicialInput');
+    const previsaoRetornoInput = document.getElementById('previsaoRetornoInput');
+    
+    // Adiciona ouvintes de evento 'input' aos campos "Data Inicial + horário" e "Horas da Previsão"
+    dataInicialInput.addEventListener('input', calcularPrevisaoRetornoAutomatica);
+    horaPrevisaoInput.addEventListener('input', calcularPrevisaoRetornoAutomatica);
+    
+    function calcularPrevisaoRetornoAutomatica() {
+        // Obtenha os valores dos campos "Data Inicial + horário" e "Horas da Previsão"
+        const dataInicialValue = new Date(dataInicialInput.value);
+        const horaPrevisaoValue = horaPrevisaoInput.value;
+    
+        if (dataInicialValue && horaPrevisaoValue) {
+            // Separe as horas e minutos da "Horas da Previsão"
+            const horasPrevisaoArray = horaPrevisaoValue.split(':');
+            const horas = parseInt(horasPrevisaoArray[0], 10);
+            const minutos = parseInt(horasPrevisaoArray[1], 10);
+    
+            // Defina o fuso horário para o horário de Brasília (UTC-3)
+            dataInicialValue.setHours(dataInicialValue.getHours() - 3);
+    
+            // Adicione as horas e minutos da previsão à data inicial
+            dataInicialValue.setHours(dataInicialValue.getHours() + horas);
+            dataInicialValue.setMinutes(dataInicialValue.getMinutes() + minutos);
+    
+            // Formate a nova data e hora da "Previsão de Retorno"
+            const novaDataHoraPrevisao = dataInicialValue.toISOString().slice(0, 16); // Formato 'AAAA-MM-DDTHH:MM'
+    
+            // Preencha o campo "Previsão de Retorno" com a nova data e hora
+            previsaoRetornoInput.value = novaDataHoraPrevisao;
+        } else {
+            // Se qualquer um dos campos estiver vazio, limpe o campo "Previsão de Retorno"
+            previsaoRetornoInput.value = '';
+        }
+    }
+    
+    
+    function limparFormulario() {
+        // Obtém uma referência aos campos de entrada que deseja limpar
+        const dataInicialInput = document.getElementById('dataInicialInput');
+        const horaInicialInput = document.getElementById('horaInicialInput');
+        const previsaoRetornoInput = document.getElementById('previsaoRetornoInput');
+    
+        // Limpa os valores dos campos
+        dataInicialInput.value = '';
+        horaInicialInput.value = '';
+        previsaoRetornoInput.value = '';
+    }
+
+
+    function filtrarTabela() {
+    const filtroFrota = document.getElementById("filtroFrota").value.toLowerCase();
+    const filtroFrente = document.getElementById("filtroFrente").value.toLowerCase();
+    const filtroFazenda = document.getElementById("filtroFazenda").value.toLowerCase();
+    const filtroDataInicial = document.getElementById("filtroDataInicial").value.toLowerCase();
+    // Repita o padrão para as outras colunas
+
+    const tabela = document.getElementById("dadosTable");
+    const linhas = tabela.getElementsByTagName("tr");
+
+    for (let i = 1; i < linhas.length; i++) { // Comece em 1 para evitar o cabeçalho
+        const colunas = linhas[i].getElementsByTagName("td");
+        const frota = colunas[0].textContent.toLowerCase();
+        const frente = colunas[1].textContent.toLowerCase();
+        const fazenda = colunas[2].textContent.toLowerCase();
+        const dataInicial = colunas[3].textContent.toLowerCase();
+        // Repita o padrão para as outras colunas
+
+        if (
+            frota.includes(filtroFrota) &&
+            frente.includes(filtroFrente) &&
+            fazenda.includes(filtroFazenda) &&
+            dataInicial.includes(filtroDataInicial)
+            // Repita o padrão para as outras colunas
+        ) {
+            linhas[i].style.display = "";
+        } else {
+            linhas[i].style.display = "none";
+        }
+    }
+}
+ 
+        </script>
+    </body>
+    </html> 
